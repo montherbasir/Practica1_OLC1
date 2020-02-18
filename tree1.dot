@@ -1,0 +1,30 @@
+strict digraph {
+splines="line";
+rankdir = TB;
+node [shape=circle, height=0.5, width=1.5, fontsize=25];
+graph[dpi=110];
+
+"0" [label="."];
+"1" [label="."];
+"2" [label="+"];
+"3" [label="abecedario"];
+"2" -> "3";
+"1" -> "2";
+"4" [label="."];
+"5" [label="conjnum"];
+"4" -> "5";
+"6" [label="?"];
+"7" [label="."];
+"8" [label=":"];
+"7" -> "8";
+"9" [label="+"];
+"10" [label="abecedario"];
+"9" -> "10";
+"7" -> "9";
+"6" -> "7";
+"4" -> "6";
+"1" -> "4";
+"0" -> "1";
+"11" [label="#"];
+"0" -> "11";
+}
