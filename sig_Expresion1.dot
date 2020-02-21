@@ -1,0 +1,15 @@
+digraph {
+splines="line";
+rankdir = TB;
+node [shape=plain, height=0.5, width=1.5, fontsize=25];
+graph[dpi=110];
+
+N [label=<
+<table border="0" cellborder="1" cellpadding="12">
+  <tr><td colspan="2">Hoja</td><td>Siguientes</td></tr>  <tr><td>a</td><td>1</td><td>2 3 4 </td></tr>
+  <tr><td>a</td><td>2</td><td>2 3 4 </td></tr>
+  <tr><td>b</td><td>3</td><td>2 3 4 </td></tr>
+  <tr><td>b</td><td>4</td><td>5 </td></tr>
+  <tr><td>¢</td><td>5</td><td>--</td></tr>
+</table>>];
+}

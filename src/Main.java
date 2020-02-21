@@ -1,9 +1,8 @@
-import javax.swing.*;
 import java.io.IOException;
 import java.util.LinkedList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static LinkedList<Expresion> principio() {
         Analizador a = new Analizador();
         String cadena ="{\n" +
                 "\n" +
@@ -18,7 +17,7 @@ public class Main {
                 "\tDefinicion de mis expresiones regulares\n" +
                 "!>\n" +
                 "//Expresion regular \n" +
-                "Expresion1 -> . | \"Los \" \"El \" . + | {vocales} {otrasLetras} * | {abecedario} \"_\";\n" +
+                "Expresion1 -> . . \"a\" * | \"a\" \"b\" b;\n" +
                 "Expresion2 ->  . +{abecedario}  . {conjnum} ? . \":\" +{abecedario};\n" +
                 "Expresion3 -> . . . . . . * | {abecedario} \"_\" + {conjnum} \">\" + {conjnum} \"es \" | \"TRUE\" \"FALSE\" \".\" ;  //Expresion de COmparacion   \n" +
                 "operaciones -> . +{digito} + . |\"+\" |\"-\" |\"*\" \"/\" +{digito};\n" +
@@ -50,11 +49,11 @@ public class Main {
         try {
             LinkedList<Token> list = a.escanear(cadena);
             a.imprimirListaToken(list);
-            a.generarExpresiones(list);
+            return a.generarExpresiones(list);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
+        return null;
     }
 }

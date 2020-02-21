@@ -610,7 +610,7 @@ public class Analizador {
                         j++;
                         tok = entrada.get(j);
                     }
-                    ex.addToken(new Token(Token.Tipo.CADENA, "#",0,0));
+                    ex.addToken(new Token(Token.Tipo.CADENA, "¢",0,0));
                     ex.ponerArbol();
                     expresiones.add(ex);
                 }

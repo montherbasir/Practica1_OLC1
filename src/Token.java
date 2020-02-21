@@ -36,6 +36,10 @@ public class Token {
         this.columna = columna;
     }
 
+    public void setVal(String valor) {
+        this.valor = valor;
+    }
+
     public String getVal()
     {
         if(tipo==Tipo.CADENA){

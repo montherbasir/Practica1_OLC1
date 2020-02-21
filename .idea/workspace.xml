@@ -29,7 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="226" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="220" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="353" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../EDD_DIC_2019_PY2_201807120" />
@@ -52,9 +52,16 @@
       <recent name="C:\Users\Monther\Documents\Practica1_OLC1\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Form1">
     <configuration name="Form" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Form" />
+      <module name="Practica1_OLC1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Form1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Form1" />
       <module name="Practica1_OLC1" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -76,6 +83,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Form1" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Form" />
         <item itemvalue="Application.LnF" />
@@ -108,7 +116,11 @@
       <workItem from="1581470916623" duration="2710000" />
       <workItem from="1581549390253" duration="7657000" />
       <workItem from="1581637356327" duration="7860000" />
-      <workItem from="1581816373916" duration="14044000" />
+      <workItem from="1581816373916" duration="17120000" />
+      <workItem from="1582037522617" duration="2971000" />
+      <workItem from="1582079000254" duration="4588000" />
+      <workItem from="1582113232400" duration="178000" />
+      <workItem from="1582245697610" duration="5617000" />
     </task>
     <servers />
   </component>
@@ -124,10 +136,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="72" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1581466242493" />
-    <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser" timestamp="1581990104492">
+    <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser" timestamp="1582081121870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581990104492" />
+    <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1582081121870" />
     <state x="318" y="15" key="CommitChangelistDialog2" timestamp="1581470162326">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -136,29 +148,29 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581818006249" />
-    <state width="1493" height="31" key="GridCell.Tab.0.bottom" timestamp="1581989485362">
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1582250975629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="31" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581989485362" />
-    <state width="1493" height="31" key="GridCell.Tab.0.center" timestamp="1581989485362">
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582250975629" />
+    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1582250975629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="31" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581989485362" />
-    <state width="1493" height="31" key="GridCell.Tab.0.left" timestamp="1581989485362">
+    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582250975629" />
+    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1582250975629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="31" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581989485362" />
-    <state width="1493" height="31" key="GridCell.Tab.0.right" timestamp="1581989485362">
+    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582250975629" />
+    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1582250975629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="31" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581989485362" />
+    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582250975629" />
     <state x="277" y="0" key="SettingsEditor" timestamp="1581470493561">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581470493561" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1581816383559">
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1582245702301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1581816383559" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582245702301" />
   </component>
 </project>

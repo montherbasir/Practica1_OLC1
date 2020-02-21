@@ -16,8 +16,9 @@ public class Expresion {
     }
 
     public void ponerArbol() throws IOException {
-        arbol = new Arbol(this.tokensList);
+        arbol = new Arbol(this.tokensList, nombre);
         arbol.add();
+        arbol.llenarTablaSig();
         arbol.graph();
     }
 
