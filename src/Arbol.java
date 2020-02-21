@@ -179,7 +179,10 @@ public class Arbol {
     public static int cont=0;
     int num;
     private LinkedList<Node> tablaSig;
+    private LinkedList<Estado> tablaTrans;
+    private LinkedList<Node> terminales;
     private String nombre;
+    private int nEstado;
     public LinkedList<Node> getTablaSig() {
         return tablaSig;
     }
@@ -193,6 +196,9 @@ public class Arbol {
         num=0;
         tablaSig = new LinkedList<Node>();
         nombre = nombre_;
+        tablaTrans = new LinkedList<Estado>();
+        terminales = new LinkedList<Node>();
+        nEstado=0;
     }
 
     public Node add() {
@@ -244,15 +250,31 @@ public class Arbol {
                 }
             }
         }
+        ponerTerminales();
+    }
+
+    private void ponerTerminales(){
+        LinkedList<Node> auxs = root.getLeaves(root, new LinkedList<Node>());
+        for(Node n: auxs){
+            boolean existe = false;
+            for(Node a : terminales){
+                if(n.getValue().getVal().equals(a.getValue().getVal())){
+                    existe = true;
+                }
+            }
+            if(!existe){
+                terminales.add(n);
+            }
+        }
     }
 
     public void grafTablaSig() throws IOException {
         StringBuilder g = new StringBuilder();
         g.append("digraph {\n" +
-                        "splines=\"line\";\n" +
-                        "rankdir = TB;\n" +
-                        "node [shape=plain, height=0.5, width=1.5, fontsize=25];\n" +
-                        "graph[dpi=90];\n\n"+
+            "splines=\"line\";\n" +
+                    "rankdir = TB;\n" +
+                    "node [shape=plain, height=0.5, width=1.5, fontsize=25];\n" +
+                    "graph[dpi=90];\n\n"+
                 "N [label=<\n" +
                 "<table border=\"0\" cellborder=\"1\" cellpadding=\"12\">\n");
         g.append("  <tr><td colspan=\"2\">Hoja</td><td>Siguientes</td></tr>");
@@ -309,6 +331,38 @@ public class Arbol {
         }
         calcSig(n.getLeft());
         calcSig(n.getRight());
+    }
+
+    public void caclTransiciones(LinkedList<Node> lista){
+        for(Node n: terminales){
+            LinkedList<Transicion> transicions = new LinkedList<Transicion>();
+            LinkedList<Node> nodos = new LinkedList<Node>();
+            for(Node x: lista){
+                if(x.getValue().getVal().equals(n.getValue().getVal())){
+                    nodos.addAll(x.getSiguientes());
+                    nodos = root.removeDuplicates(nodos);
+                }
+            }
+            if(nodos.size()>0){
+                Estado ex = existeEstado(nodos);
+                if(ex==null){
+                    Estado estado = new Estado("S"+nEstado);
+                    estado.setListaNodos(nodos);
+                    transicions.add(new Transicion(n, estado));
+                }else{
+                    transicions.add(new Transicion(n, ex));
+                }
+            }
+        }
+    }
+
+    private Estado existeEstado(LinkedList<Node> nodos){
+        for(Estado e: tablaTrans){
+            if(e.getListaNodos().equals(nodos)){
+                return e;
+            }
+        }
+        return null;
     }
 
     public void graph() throws IOException {
