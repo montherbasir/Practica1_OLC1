@@ -4,47 +4,123 @@ rankdir = TB;
 node [shape=circle, height=0.5, width=1.5, fontsize=25];
 graph[dpi=90];
 
-"0" [label="."];
-"1" [label="."];
-"2" [label="."];
-"3" [label="."];
-"4" [label="."];
-"5" [label="."];
-"6" [label="."];
-"7" [label="*"];
-"8" [label="|"];
-"9" [label="abecedario"];
+"0" [label=". 
+A: N
+P: 1 2 3 
+U: 10  "];
+"1" [label=". 
+A: N
+P: 1 2 3 
+U: 9  "];
+"2" [label=". 
+A: N
+P: 1 2 3 
+U: 7 8  "];
+"3" [label=". 
+A: N
+P: 1 2 3 
+U: 6  "];
+"4" [label=". 
+A: N
+P: 1 2 3 
+U: 5  "];
+"5" [label=". 
+A: N
+P: 1 2 3 
+U: 4  "];
+"6" [label=". 
+A: N
+P: 1 2 3 
+U: 3  "];
+"7" [label="* 
+A: A
+P: 1 2 
+U: 1 2  "];
+"8" [label="| 
+A: N
+P: 1 2 
+U: 1 2  "];
+"9" [label="abecedario 
+A: N
+P: 1 
+U: 1 
+i: 1 "];
 "8" -> "9";
-"10" [label="_"];
+"10" [label="_ 
+A: N
+P: 2 
+U: 2 
+i: 2 "];
 "8" -> "10";
 "7" -> "8";
 "6" -> "7";
-"11" [label="+"];
-"12" [label="conjnum"];
+"11" [label="+ 
+A: N
+P: 3 
+U: 3  "];
+"12" [label="conjnum 
+A: N
+P: 3 
+U: 3 
+i: 3 "];
 "11" -> "12";
 "6" -> "11";
 "5" -> "6";
-"13" [label=">"];
+"13" [label="> 
+A: N
+P: 4 
+U: 4 
+i: 4 "];
 "5" -> "13";
 "4" -> "5";
-"14" [label="+"];
-"15" [label="conjnum"];
+"14" [label="+ 
+A: N
+P: 5 
+U: 5  "];
+"15" [label="conjnum 
+A: N
+P: 5 
+U: 5 
+i: 5 "];
 "14" -> "15";
 "4" -> "14";
 "3" -> "4";
-"16" [label="es "];
+"16" [label="es  
+A: N
+P: 6 
+U: 6 
+i: 6 "];
 "3" -> "16";
 "2" -> "3";
-"17" [label="|"];
-"18" [label="TRUE"];
+"17" [label="| 
+A: N
+P: 7 8 
+U: 7 8  "];
+"18" [label="TRUE 
+A: N
+P: 7 
+U: 7 
+i: 7 "];
 "17" -> "18";
-"19" [label="FALSE"];
+"19" [label="FALSE 
+A: N
+P: 8 
+U: 8 
+i: 8 "];
 "17" -> "19";
 "2" -> "17";
 "1" -> "2";
-"20" [label="."];
+"20" [label=". 
+A: N
+P: 9 
+U: 9 
+i: 9 "];
 "1" -> "20";
 "0" -> "1";
-"21" [label="¢"];
+"21" [label="¢ 
+A: N
+P: 10 
+U: 10 
+i: 10 "];
 "0" -> "21";
 }

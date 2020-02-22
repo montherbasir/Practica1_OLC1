@@ -1,0 +1,12 @@
+digraph {
+overlap = false;
+splines = true;
+rankdir = LR;
+node [shape=circle, height=0.5, width=1.5, fontsize=20];
+edge [fontsize=20];
+graph[dpi=90];
+
+"S0" [label="S0"];
+"S1" [label="S1"];
+"S2" [label="S2", peripheries=2];
+"S0" -> "S1"[label="a"];"S1" -> "S1"[label="a"];"S1" -> "S2"[label="b"];"S2" -> "S1"[label="a"];"S2" -> "S2"[label="b"];}

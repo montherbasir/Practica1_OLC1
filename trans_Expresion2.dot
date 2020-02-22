@@ -6,7 +6,7 @@ graph[dpi=90];
 
 N [label=<
 <table border="0" cellborder="1" cellpadding="12">
-  <tr><td>Estado</td><td colspan="4">Terminales</td></tr>  <tr><td>S0 {1 }</td><td>abecedario -» S1  </td></tr>
+  <tr><td>Estado</td><td colspan="4">Transiciones</td></tr>  <tr><td>S0 {1 }</td><td>abecedario -» S1  </td></tr>
   <tr><td>S1 {1 2 }</td><td>abecedario -» S1  conjnum -» S2  </td></tr>
   <tr><td>S2 {3 5 }</td><td>: -» S3  </td></tr>
   <tr><td>S3 {4 }</td><td>abecedario -» S4  </td></tr>

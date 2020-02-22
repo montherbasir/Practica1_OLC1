@@ -1,0 +1,16 @@
+digraph {
+overlap = false;
+splines = true;
+rankdir = LR;
+node [shape=circle, height=0.5, width=1.5, fontsize=20];
+edge [fontsize=20];
+graph[dpi=90];
+
+"S0" [label="S0"];
+"S1" [label="S1"];
+"S2" [label="S2"];
+"S3" [label="S3"];
+"S4" [label="S4"];
+"S5" [label="S5"];
+"S6" [label="S6", peripheries=2];
+"S0" -> "S0"[label="abecedario"];"S0" -> "S0"[label="_"];"S0" -> "S1"[label="conjnum"];"S1" -> "S1"[label="conjnum"];"S1" -> "S2"[label="»"];"S2" -> "S3"[label="conjnum"];"S3" -> "S3"[label="conjnum"];"S3" -> "S4"[label="es "];"S4" -> "S5"[label="TRUE"];"S4" -> "S5"[label="FALSE"];"S5" -> "S6"[label="."];}

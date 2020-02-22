@@ -4,10 +4,20 @@ public class Estado {
     private String nombre;
     private LinkedList<Node> listaNodos;
     private LinkedList<Transicion> transiciones;
+    private boolean aceptacion;
+
+    public boolean isAceptacion() {
+        return aceptacion;
+    }
+
+    public void setAceptacion(boolean aceptacion) {
+        this.aceptacion = aceptacion;
+    }
 
     public Estado(String nombre) {
         this.nombre = nombre;
         transiciones = new LinkedList<Transicion>();
+        aceptacion = false;
     }
 
     public LinkedList<Transicion> getTransiciones() {

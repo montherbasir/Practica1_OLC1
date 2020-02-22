@@ -153,7 +153,23 @@ class Node {
 
     public String getGraph() {
         String g;
-        g = "\"" + index + "\" [label=\"" + value.getVal() + "\"];\n";
+        String A="N";
+        String P="";
+        String U="";
+        if(isAnulable()){
+            A="A";
+        }
+        for(Node p: primeros()){
+            P += p.leafVal+" ";
+        }
+        for(Node p: ultimos()){
+            U += p.leafVal+" ";
+        }
+        g = "\"" + index + "\" [label=\"" + value.getVal() + " \nA: "+A+"\nP: "+P+"\nU: "+U;
+        if(isLeaf()){
+            g+= "\ni: "+leafVal;
+        }
+        g+=" \"];\n";
 
         if (left != null) {
             g += left.getGraph() + "\"" + index + "\" -> \"" + left.index + "\";\n";
@@ -361,6 +377,13 @@ public class Arbol {
                     Estado estado = new Estado("S"+nEstado);
                     nEstado++;
                     estado.setListaNodos(nodos);
+                    for(Node nodo: nodos){
+                        if(nodo.getValue().getVal().equals("¢")){
+                            System.out.println("ACEPTACION");
+                            estado.setAceptacion(true);
+                            break;
+                        }
+                    }
 //                    transicions.add(new Transicion(n, estado));
                     est.getTransiciones().add(new Transicion(n, estado));
                     est.setTransiciones(root.removeDuplicatesTrans(est.getTransiciones()));
@@ -378,6 +401,7 @@ public class Arbol {
             System.out.println("------------------");
         }
         graphTrans();
+        graphAfd();
     }
 
     public void graphTrans() throws IOException {
@@ -421,15 +445,40 @@ public class Arbol {
         Process p = Runtime.getRuntime().exec(command);
     }
 
-    public void graphAfd(){
+    public void graphAfd() throws IOException {
         StringBuilder g = new StringBuilder();
         g.append("digraph {\n" +
-                "splines=\"line\";\n" +
-                "rankdir = TB;\n" +
+                //"splines=\"line\";\n" +
+                "overlap = false;\n" +
+                "splines = true;\n"+
+                "rankdir = LR;\n" +
                 "node [shape=circle, height=0.5, width=1.5, fontsize=20];\n" +
+                "edge [fontsize=20];\n"+
                 "graph[dpi=90];\n\n");
 
-        
+        for(Estado e: tablaTrans){
+            g.append("\"").append(e.getNombre()).append("\" [label=\"").append(e.getNombre()).append("\"");
+            if(e.isAceptacion()){
+                g.append(", peripheries=2");
+            }
+            g.append("];\n");
+        }
+        for(Estado e: tablaTrans){
+            for(Transicion t: e.getTransiciones()){
+                g.append("\"").append(e.getNombre()).append("\" -> \"").append(t.getEstado().getNombre()).append("\"");
+                g.append("[label=\"").append(t.getTerminal().getValue().getVal()).append("\"];");
+            }
+        }
+        g.append("}");
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("afd_"+nombre+".dot"));
+        writer.write(String.valueOf(g));
+
+        writer.close();
+
+        String command = "dot -Tpng afd_"+nombre+".dot -o afd_"+nombre+".png";
+        System.out.println(command);
+        Process p = Runtime.getRuntime().exec(command);
     }
 
     private Estado existeEstado(LinkedList<Node> nodos){
@@ -457,6 +506,7 @@ public class Arbol {
     }
 
     public void graph() throws IOException {
+        numerar();
         String graph = "strict digraph {\n" +
                 "splines=\"line\";\n" +
                 "rankdir = TB;\n" +
@@ -475,7 +525,7 @@ public class Arbol {
         String command = "dot -Tpng tree_"+nombre+".dot -o tree_"+nombre+".png";
         System.out.println(command);
         Process p = Runtime.getRuntime().exec(command);
-        numerar();
+
         grafTablaSig();
         cont++;
 //        BufferedImage img = ImageIO.read(new File("avl.png"));
