@@ -246,6 +246,7 @@ public class Analizador {
                         {
                             auxlex += c;
                             System.out.println("Error lexico con: " + auxlex);
+                            Form1.f1.consoleP("Error lexico con: " + auxlex);
                             this.numErr+=1;
                             estado = 0;
                             auxlex = "";
@@ -319,6 +320,7 @@ public class Analizador {
                     else
                     {
                         System.out.println("error");
+                        Form1.f1.consoleP("Error lexico con: " + auxlex);
                         //ERROR
                     }
                     break;
@@ -358,6 +360,7 @@ public class Analizador {
                         auxlex += c;
                     }else{
                         System.out.println("error");
+                        Form1.f1.consoleP("Error lexico con: " + auxlex);
                         //ERROR
                     }
                     break;
@@ -395,6 +398,7 @@ public class Analizador {
                     {
                         auxlex += c;
                         System.out.println("Error lexico con: " + auxlex);
+                        Form1.f1.consoleP("Error lexico con: " + auxlex);
                         this.numErr += 1;
                         estado = 0;
                         auxlex = "";
@@ -410,6 +414,7 @@ public class Analizador {
                     {
                         auxlex += c;
                         System.out.println("Error lexico con: " + auxlex);
+                        Form1.f1.consoleP("Error lexico con: " + auxlex);
                         this.numErr += 1;
                         estado = 0;
                         auxlex = "";
@@ -451,6 +456,7 @@ public class Analizador {
                     {
                         auxlex += c;
                         System.out.println("Error lexico con: " + auxlex);
+                        Form1.f1.consoleP("Error lexico con: " + auxlex);
                         this.numErr += 1;
                         estado = 0;
                         auxlex = "";
@@ -591,6 +597,17 @@ public class Analizador {
             System.out.println(item.getTipo() + "           " + item.getVal());
         }
         System.out.println("Numero de errores: "+numErr);
+        Form1.f1.consoleP("Numero de errores: "+numErr);
+    }
+
+    public void validarExpresiones(LinkedList<Token> entrada){
+        for (int i=0; i<entrada.size();i++) {
+            if(entrada.get(i).getTipo() == Token.Tipo.ID){
+                if((entrada.get(i+1).getTipo() == Token.Tipo.DOS_PUNTOS)){
+                    Form1.f1.consoleP(entrada.get(i).getVal()+": EXPRESION VALIDA");
+                }
+            }
+        }
     }
 
     public LinkedList<Expresion> generarExpresiones(LinkedList<Token> entrada) throws IOException {

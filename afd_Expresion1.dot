@@ -9,4 +9,4 @@ graph[dpi=90];
 "S0" [label="S0"];
 "S1" [label="S1"];
 "S2" [label="S2", peripheries=2];
-"S0" -> "S1"[label="a"];"S1" -> "S1"[label="a"];"S1" -> "S2"[label="b"];"S2" -> "S1"[label="a"];"S2" -> "S2"[label="b"];}
+"S0" -> "S1"[label="Los "];"S0" -> "S1"[label="El "];"S1" -> "S2"[label="vocales"];"S1" -> "S2"[label="otrasLetras"];"S2" -> "S2"[label="vocales"];"S2" -> "S2"[label="otrasLetras"];"S2" -> "S2"[label="abecedario"];"S2" -> "S2"[label="_"];}

@@ -9,6 +9,6 @@ N [label=<
   <tr><td>Estado</td><td colspan="6">Transiciones</td></tr>  <tr><td>S0 {1 }</td><td>digito -» S1  </td></tr>
   <tr><td>S1 {1 2 3 4 5 }</td><td>digito -» S1  + -» S2  - -» S2  * -» S2  / -» S2  </td></tr>
   <tr><td>S2 {6 }</td><td>digito -» S3  </td></tr>
-  <tr><td>S3 {2 3 4 5 6 7 }</td><td>digito -» S3  + -» S2  - -» S2  * -» S2  / -» S2  </td></tr>
+  <tr><td>S3 {2 3 4 5 6 }</td><td>digito -» S3  + -» S2  - -» S2  * -» S2  / -» S2  </td></tr>
 </table>>];
 }

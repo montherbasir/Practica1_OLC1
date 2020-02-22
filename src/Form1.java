@@ -4,6 +4,11 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.LinkedList;
 
 public class Form1 {
@@ -12,19 +17,59 @@ public class Form1 {
     private JTextArea textArea1;
     private JButton cargarArchivoButton;
     private JButton analizarButton;
-    private JButton abrirFotoButton;
-    private JButton button4;
     private JTextArea textArea2;
     private JLabel icono;
+    public static Form1 f1;
+    public static JFrame frame;
+    public Form1() {
+        analizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    f1.llenarTree(Main.principio(textArea2.getText()));
+                }catch (Exception ex){
+                    new JOptionPane("Error");
+                }
+
+            }
+        });
+        cargarArchivoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    JFileChooser open = new JFileChooser();
+                    int option = open.showOpenDialog(frame);
+                    File f1 = new File(open.getSelectedFile().getPath());
+                    FileReader fr = new FileReader(f1);
+                    BufferedReader br = new BufferedReader(fr);
+                    String s;
+                    while((s=br.readLine())!=null)
+                    {
+                        textArea2.append(s + "\n");
+                    }
+                    fr.close();
+                }
+                catch(Exception ae)
+                {
+                    System.out.println(ae);
+                }
+            }
+        });
+    }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Form1");
-        Form1 f1 = new Form1();
+        frame  = new JFrame("Form1");
+        f1 = new Form1();
         frame.setContentPane(f1.panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        f1.llenarTree(Main.principio());
+    }
+
+    public void consoleP(String s){
+        textArea1.append(s);
+        textArea1.append("\n");
     }
 
     public void llenarTree(LinkedList<Expresion> expresiones){
@@ -53,7 +98,6 @@ public class Form1 {
                     DefaultMutableTreeNode x = (DefaultMutableTreeNode) e.getPath().getLastPathComponent();
                     if (x.isLeaf()) {
                         String ruta = x.toString();
-                        textArea1.append(ruta);
                         icono.setIcon(new ImageIcon(ruta+".png"));
                     }
                 }

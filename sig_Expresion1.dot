@@ -6,10 +6,12 @@ graph[dpi=90];
 
 N [label=<
 <table border="0" cellborder="1" cellpadding="12">
-  <tr><td colspan="2">Hoja</td><td>Siguientes</td></tr>  <tr><td>a</td><td>1</td><td>2 3 4 </td></tr>
-  <tr><td>a</td><td>2</td><td>2 3 4 </td></tr>
-  <tr><td>b</td><td>3</td><td>2 3 4 </td></tr>
-  <tr><td>b</td><td>4</td><td>5 </td></tr>
-  <tr><td>¢</td><td>5</td><td>--</td></tr>
+  <tr><td colspan="2">Hoja</td><td>Siguientes</td></tr>  <tr><td>Los </td><td>1</td><td>3 4 </td></tr>
+  <tr><td>El </td><td>2</td><td>3 4 </td></tr>
+  <tr><td>vocales</td><td>3</td><td>3 4 5 6 7 </td></tr>
+  <tr><td>otrasLetras</td><td>4</td><td>3 4 5 6 7 </td></tr>
+  <tr><td>abecedario</td><td>5</td><td>5 6 7 </td></tr>
+  <tr><td>_</td><td>6</td><td>5 6 7 </td></tr>
+  <tr><td>¢</td><td>7</td><td>--</td></tr>
 </table>>];
 }

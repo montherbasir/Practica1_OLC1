@@ -6,8 +6,8 @@ graph[dpi=90];
 
 N [label=<
 <table border="0" cellborder="1" cellpadding="12">
-  <tr><td>Estado</td><td colspan="3">Transiciones</td></tr>  <tr><td>S0 {1 }</td><td>a -» S1  </td></tr>
-  <tr><td>S1 {2 3 4 }</td><td>a -» S1  b -» S2  </td></tr>
-  <tr><td>S2 {2 3 4 5 }</td><td>a -» S1  b -» S2  </td></tr>
+  <tr><td>Estado</td><td colspan="7">Transiciones</td></tr>  <tr><td>S0 {1 2 }</td><td>Los  -» S1  El  -» S1  </td></tr>
+  <tr><td>S1 {3 4 }</td><td>vocales -» S2  otrasLetras -» S2  </td></tr>
+  <tr><td>S2 {3 4 5 6 7 }</td><td>vocales -» S2  otrasLetras -» S2  abecedario -» S2  _ -» S2  </td></tr>
 </table>>];
 }
