@@ -20,6 +20,9 @@ public class Expresion {
         arbol.add();
         arbol.llenarTablaSig();
         arbol.graph();
+        Estado es = new Estado("S0");
+        es.setListaNodos(arbol.root.primeros());
+        arbol.calcTransiciones(es);
     }
 
     public Arbol getArbol() {

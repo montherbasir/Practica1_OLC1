@@ -7,6 +7,7 @@ public class Estado {
 
     public Estado(String nombre) {
         this.nombre = nombre;
+        transiciones = new LinkedList<Transicion>();
     }
 
     public LinkedList<Transicion> getTransiciones() {

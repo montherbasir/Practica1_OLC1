@@ -2,7 +2,7 @@ digraph {
 splines="line";
 rankdir = TB;
 node [shape=plain, height=0.5, width=1.5, fontsize=25];
-graph[dpi=110];
+graph[dpi=90];
 
 N [label=<
 <table border="0" cellborder="1" cellpadding="12">

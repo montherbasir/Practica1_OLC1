@@ -22,6 +22,10 @@ class Node {
         return (LinkedList<Node>) new LinkedList<Node>(new LinkedHashSet<Node>(list));
     }
 
+    public LinkedList<Transicion> removeDuplicatesTrans(LinkedList<Transicion> list){
+        return (LinkedList<Transicion>) new LinkedList<Transicion>(new LinkedHashSet<Transicion>(list));
+    }
+
     public boolean isAnulable() {
         switch (value.getTipo()){
             case ID:
@@ -255,6 +259,7 @@ public class Arbol {
 
     private void ponerTerminales(){
         LinkedList<Node> auxs = root.getLeaves(root, new LinkedList<Node>());
+        System.out.println("terminales");
         for(Node n: auxs){
             boolean existe = false;
             for(Node a : terminales){
@@ -263,9 +268,11 @@ public class Arbol {
                 }
             }
             if(!existe){
+                System.out.println(n.getValue().getVal());
                 terminales.add(n);
             }
         }
+        System.out.println("----------------");
     }
 
     public void grafTablaSig() throws IOException {
@@ -333,32 +340,116 @@ public class Arbol {
         calcSig(n.getRight());
     }
 
-    public void caclTransiciones(LinkedList<Node> lista){
+    public void calcTransiciones(Estado est) throws IOException {
+        if(tablaTrans.size()==0){
+            tablaTrans.add(est);
+            nEstado++;
+        }
         for(Node n: terminales){
             LinkedList<Transicion> transicions = new LinkedList<Transicion>();
             LinkedList<Node> nodos = new LinkedList<Node>();
-            for(Node x: lista){
+            System.out.println("Primeros ");
+            for(Node x: est.getListaNodos()){
+                System.out.println(x.getLeafVal());
                 if(x.getValue().getVal().equals(n.getValue().getVal())){
                     nodos.addAll(x.getSiguientes());
                     nodos = root.removeDuplicates(nodos);
                 }
             }
-            if(nodos.size()>0){
                 Estado ex = existeEstado(nodos);
                 if(ex==null){
                     Estado estado = new Estado("S"+nEstado);
+                    nEstado++;
                     estado.setListaNodos(nodos);
-                    transicions.add(new Transicion(n, estado));
-                }else{
-                    transicions.add(new Transicion(n, ex));
+//                    transicions.add(new Transicion(n, estado));
+                    est.getTransiciones().add(new Transicion(n, estado));
+                    est.setTransiciones(root.removeDuplicatesTrans(est.getTransiciones()));
+                    tablaTrans.add(estado);
+                    calcTransiciones(estado);
                 }
-            }
+                else{
+                    //transicions.add(new Transicion(n, ex));
+                    if(nodos.size()>0){
+                        est.getTransiciones().add(new Transicion(n, ex));
+                        est.setTransiciones(root.removeDuplicatesTrans(est.getTransiciones()));
+                    }
+                }
+
+            System.out.println("------------------");
         }
+        graphTrans();
+    }
+
+    public void graphTrans() throws IOException {
+        StringBuilder g = new StringBuilder();
+        g.append("digraph {\n" +
+                "splines=\"line\";\n" +
+                "rankdir = TB;\n" +
+                "node [shape=plain, height=0.5, width=1.5, fontsize=25];\n" +
+                "graph[dpi=90];\n\n"+
+                "N [label=<\n" +
+                "<table border=\"0\" cellborder=\"1\" cellpadding=\"12\">\n");
+        g.append("  <tr><td>Estado</td><td colspan=\"").append(terminales.size()).append("\">Transiciones</td></tr>");
+
+        for(Estado es : tablaTrans){
+            g.append("  <tr><td>").append(es.getNombre());
+            g.append(" {");
+            for(Node x: es.getListaNodos()){
+                g.append(x.getLeafVal());
+                g.append(" ");
+            }
+            g.append("}");
+            g.append("</td>");
+            g.append("<td>");
+            for(Transicion t: es.getTransiciones()){
+                g.append(t.getTerminal().getValue().getVal());
+                g.append(" -» ");
+                g.append(t.getEstado().getNombre());
+                g.append("  ");
+            }
+            g.append("</td></tr>\n");
+        }
+        g.append("</table>>];\n}");
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("trans_"+nombre+".dot"));
+        writer.write(String.valueOf(g));
+
+        writer.close();
+
+        String command = "dot -Tpng trans_"+nombre+".dot -o trans_"+nombre+".png";
+        System.out.println(command);
+        Process p = Runtime.getRuntime().exec(command);
+    }
+
+    public void graphAfd(){
+        StringBuilder g = new StringBuilder();
+        g.append("digraph {\n" +
+                "splines=\"line\";\n" +
+                "rankdir = TB;\n" +
+                "node [shape=circle, height=0.5, width=1.5, fontsize=20];\n" +
+                "graph[dpi=90];\n\n");
+
+        
     }
 
     private Estado existeEstado(LinkedList<Node> nodos){
+        int x;
         for(Estado e: tablaTrans){
-            if(e.getListaNodos().equals(nodos)){
+//            if(e.getListaNodos().equals(nodos)){
+//                System.out.println("eXiste");
+//                return e;
+//            }
+            x=0;
+            for(Node n: e.getListaNodos()){
+                for(Node c: nodos){
+                    System.out.println(c.getLeafVal()+"  "+n.getLeafVal());
+                    if(c.getLeafVal()==n.getLeafVal()){
+                        x++;
+                    }
+                }
+            }
+            if(x==nodos.size()){
+                System.out.println("Existe");
                 return e;
             }
         }
